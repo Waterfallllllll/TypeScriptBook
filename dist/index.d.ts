@@ -1,4 +1,3 @@
-declare function calculateTax(amount: number): number;
-declare function calculateTax(amount: null): null;
-declare function writeValue(label: string, value: number): void;
+declare function check(expression: boolean): asserts expression;
+declare function calculateTax(amount: number | null): number;
 declare let taxAmount: number;

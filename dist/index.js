@@ -1,13 +1,11 @@
-function calculateTax(amount) {
-    if (amount != null) {
-        return amount * 1.2;
+function check(expression) {
+    if (!expression) {
+        throw new Error("Expression is false");
     }
-    return null;
 }
-function writeValue(label, value) {
-    console.log(`${label}: ${value}`);
+function calculateTax(amount) {
+    check(typeof amount == "number");
+    return amount * 1.2;
 }
 let taxAmount = calculateTax(100);
-// if (typeof taxAmount === "number") {
-//     writeValue("Tax value", taxAmount);
-// }
+console.log(`Tax value: ${taxAmount}`);
