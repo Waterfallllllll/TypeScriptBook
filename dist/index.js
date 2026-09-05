@@ -1,10 +1,10 @@
-function check(expression) {
-    if (!expression) {
-        throw new Error("Expression is false");
+function checkNumber(val) {
+    if (typeof val != "number") {
+        throw new Error("Not a number");
     }
 }
 function calculateTax(amount) {
-    check(typeof amount == "number");
+    checkNumber(amount);
     return amount * 1.2;
 }
 let taxAmount = calculateTax(100);
