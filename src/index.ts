@@ -6,13 +6,15 @@ function writePrice(product: string, price: number): void {
     console.log(`Price for ${product}: $${price.toFixed(2)}`);
 }
 
-let hat: [string, number, number?] = ["Hat", 100];
-let gloves: [string, number, number?] = ["Gloves", 75, 10];
+const enum Product {Hat, Gloves, Umbrella}
+let productValue = Product.Hat;
 
-[hat, gloves].forEach(tuple => {
-    let [name, price, taxRate] = tuple;
-    if (taxRate != undefined) {
-        price += price * (taxRate / 100);
-    }
-    writePrice(name, price);
-});
+
+let restrictedValue: 1 | 2 | 3 = 1;
+let secondValue: 1 | 10 | 100 = 1;
+
+restrictedValue = secondValue;
+secondValue = 100;
+restrictedValue = secondValue;
+
+console.log(`Value: ${restrictedValue}`);

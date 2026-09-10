@@ -4,12 +4,10 @@ function calculateTax(amount) {
 function writePrice(product, price) {
     console.log(`Price for ${product}: $${price.toFixed(2)}`);
 }
-let hat = ["Hat", 100];
-let gloves = ["Gloves", 75, 10];
-[hat, gloves].forEach(tuple => {
-    let [name, price, taxRate] = tuple;
-    if (taxRate != undefined) {
-        price += price * (taxRate / 100);
-    }
-    writePrice(name, price);
-});
+let productValue = 0 /* Product.Hat */;
+let restrictedValue = 1;
+let secondValue = 1;
+restrictedValue = secondValue;
+secondValue = 100;
+restrictedValue = secondValue;
+console.log(`Value: ${restrictedValue}`);
