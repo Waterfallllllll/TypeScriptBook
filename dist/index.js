@@ -4,7 +4,7 @@ function calculatePrice(quantity, price) {
 let total = calculatePrice(2, 19.99);
 console.log(`Price: ${total}`);
 function getRandomValue() {
-    return Math.floor(Math.random() * 4) + 1;
+    return Math.floor(Math.floor(Math.random() * 4)) + 1;
 }
 function getCityString(city) {
     return `City: ${city}`;
