@@ -1,22 +1,7 @@
-function calculatePrice(quantity: 1 | 2, price: number): number {
-    return quantity * price;
-}
+let hat = { name: "Hat", price: 100 };
+let gloves = { name: "Gloves", price: 75 };
+let umbrella = { name: "Umbrella" };
 
-let total = calculatePrice(2, 19.99);
-console.log(`Price: ${total}`);
+let products = [hat, gloves, umbrella];
 
-type numVals = 1 | 2 | 3 | 4;
-
-function getRandomValue(): numVals {
-    return Math.floor(Math.floor(Math.random() * 4)) + 1 as numVals;
-}
-
-type cities = "London" | "Paris" | "Chicago";
-type cityResponse = `City: ${cities}`;
-
-function getCityString(city: cities): cityResponse {
-    return `City: ${city}`;
-}
-
-let str = getCityString("London");
-console.log(str);
+products.forEach((prod) => console.log(`${prod.name}: ${prod.price}`));
