@@ -1,27 +1,31 @@
-enum Feature {
-    Waterproof,
-    Insulated,
-}
-
 type Product = {
-    name: string;
+    id: number;
+    name: number;
     price?: number;
-    hasFeature?(Feature): boolean;
 };
 
-let hat = { name: "Hat", price: 100 };
-let gloves = { name: "Gloves", price: 75 };
+type Person = {
+    id: string;
+    name: string;
+    city: string;
+};
+
+type UnionType = {
+    id: number | string,
+    name: string,
+};
+
+let hat = { id: 1, name: "Hat", price: 100 };
+let gloves = { id: 2, name: "Gloves", price: 75 };
 let umbrella = {
+    id: 3,
     name: "Umbrella",
     price: 30,
-    hasFeature: (feature) => feature === Feature.Waterproof,
 };
+let bob = { id: "bsmith", name: "Bob", city: "London" };
 
-let products: Product[] = [hat, gloves, umbrella];
+let dataItems: UnionType[] = [hat, gloves, umbrella, bob];
 
-products.forEach((prod) =>
-    console.log(
-        `${prod.name}: ${prod.price} ` +
-            `${prod.hasFeature ? prod.hasFeature(Feature.Waterproof) : "false"}`,
-    ),
+dataItems.forEach((item) =>
+    console.log(`ID: ${item.id}, Name: ${item.name}`),
 );
