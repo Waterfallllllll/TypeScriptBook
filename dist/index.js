@@ -7,4 +7,14 @@ let umbrella = {
 };
 let bob = { id: "bsmith", name: "Bob", city: "London" };
 let dataItems = [hat, gloves, umbrella, bob];
-dataItems.forEach((item) => console.log(`ID: ${item.id}, Name: ${item.name}`));
+function isPerson(testObj) {
+    return testObj.city !== undefined;
+}
+dataItems.forEach((item) => {
+    if (isPerson(item)) {
+        console.log(`Person: ${item.name}: ${item.city}`);
+    }
+    else {
+        console.log(`Prdouct: ${item.name}: ${item.price}`);
+    }
+});

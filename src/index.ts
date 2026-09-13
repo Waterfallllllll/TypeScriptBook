@@ -1,6 +1,6 @@
 type Product = {
     id: number;
-    name: number;
+    name: string;
     price?: number;
 };
 
@@ -23,9 +23,16 @@ let umbrella = {
     price: 30,
 };
 let bob = { id: "bsmith", name: "Bob", city: "London" };
+let dataItems: (Product | Person)[] = [hat, gloves, umbrella, bob];
 
-let dataItems: UnionType[] = [hat, gloves, umbrella, bob];
+function isPerson(testObj: any): testObj is Person {
+    return testObj.city !== undefined;
+}
 
-dataItems.forEach((item) =>
-    console.log(`ID: ${item.id}, Name: ${item.name}`),
-);
+dataItems.forEach((item) => {
+    if (isPerson(item)) {
+        console.log(`Person: ${item.name}: ${item.city}`);
+    } else {
+        console.log(`Prdouct: ${item.name}: ${item.price}`)
+    }
+});

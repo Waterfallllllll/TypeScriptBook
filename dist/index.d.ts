@@ -1,6 +1,6 @@
 type Product = {
     id: number;
-    name: number;
+    name: string;
     price?: number;
 };
 type Person = {
@@ -32,4 +32,5 @@ declare let bob: {
     name: string;
     city: string;
 };
-declare let dataItems: UnionType[];
+declare let dataItems: (Product | Person)[];
+declare function isPerson(testObj: any): testObj is Person;
