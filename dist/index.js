@@ -14,6 +14,7 @@ class Employee {
     }
 }
 let salesEmployee = new Employee("fvega", "Fidel Vega", "Sales", "Paris");
+salesEmployee.writeDept();
 let data = [
     { id: "bsmith", name: "Bob Smith", city: "London" },
     { id: "ajones", name: "Alice Jones", city: "Paris" },
