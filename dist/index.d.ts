@@ -2,13 +2,14 @@ type Person = {
     id: string;
     name: string;
     city: string;
-    contact: number;
 };
 type Employee = {
     id: string;
-    company: string;
+    name: string;
     dept: string;
-    contact: string;
+    city: string;
+    writeDept: () => void;
 };
-type EmployedPerson = Person & Employee;
-declare let typeTest: never;
+declare let Employee: (id: string, name: string, dept: string, city: string) => void;
+declare let salesEmployee: any;
+declare let data: (Person | Employee)[];
