@@ -12,5 +12,6 @@ declare class Employee {
     writeDept(): void;
     get location(): string;
     get details(): string;
+    accessor salary: number;
 }
 declare let salesEmployee: Employee;
