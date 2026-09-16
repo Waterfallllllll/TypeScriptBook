@@ -7,6 +7,9 @@ class Person {
         this.name = name;
         this.city = city;
     }
+    getDetails() {
+        return `${this.name}, ${this.getSpecificDetails()}`;
+    }
 }
 ;
 class Employee extends Person {
@@ -19,8 +22,8 @@ class Employee extends Person {
         this.name = name;
         this.dept = dept;
     }
-    writeDept() {
-        console.log(`${this.name} works in ${this.dept}`);
+    getSpecificDetails() {
+        return `works in ${this.dept}`;
     }
 }
 class Customer extends Person {
@@ -35,6 +38,9 @@ class Customer extends Person {
         this.city = city;
         this.creditLimit = creditLimit;
     }
+    getSpecificDetails() {
+        return `has ${this.creditLimit} limit`;
+    }
 }
 class Supplier extends Person {
     id;
@@ -48,18 +54,12 @@ class Supplier extends Person {
         this.city = city;
         this.companyName = companyName;
     }
+    getSpecificDetails() {
+        return `works for ${this.companyName}`;
+    }
 }
 let data = [new Employee("fvega", "Fidel Vega", "Sales", "Paris"), new Customer("ajones", "Alice jones", "London", 500)];
 data.push(new Supplier("dpeters", "Dora Peters", "New York", "Acme"));
 data.forEach(item => {
-    console.log(`Person: ${item.name}, ${item.city}`);
-    if (item instanceof Employee) {
-        item.writeDept();
-    }
-    else if (item instanceof Customer) {
-        console.log(`Customer ${item.name} has ${item.creditLimit} limit`);
-    }
-    else if (item instanceof Supplier) {
-        console.log(`Supplier ${item.name} works for ${item.companyName}`);
-    }
+    console.log(item.getDetails());
 });

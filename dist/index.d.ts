@@ -1,15 +1,17 @@
-declare class Person {
+declare abstract class Person {
     id: string;
     name: string;
     city: string;
     constructor(id: string, name: string, city: string);
+    getDetails(): string;
+    abstract getSpecificDetails(): string;
 }
 declare class Employee extends Person {
     readonly id: string;
     name: string;
     private dept;
     constructor(id: string, name: string, dept: string, city: string);
-    writeDept(): void;
+    getSpecificDetails(): string;
 }
 declare class Customer extends Person {
     readonly id: string;
@@ -17,6 +19,7 @@ declare class Customer extends Person {
     city: string;
     creditLimit: number;
     constructor(id: string, name: string, city: string, creditLimit: number);
+    getSpecificDetails(): string;
 }
 declare class Supplier extends Person {
     readonly id: string;
@@ -24,5 +27,6 @@ declare class Supplier extends Person {
     city: string;
     companyName: string;
     constructor(id: string, name: string, city: string, companyName: string);
+    getSpecificDetails(): string;
 }
 declare let data: Person[];
