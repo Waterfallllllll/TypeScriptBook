@@ -11,6 +11,6 @@ declare class Employee {
     constructor(id: string, name: string, dept: string, city: string);
     writeDept(): void;
     get location(): string;
-    set location(newCity: string);
+    get details(): string;
 }
 declare let salesEmployee: Employee;
