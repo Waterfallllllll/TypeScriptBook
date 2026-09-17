@@ -3,6 +3,11 @@ interface Person {
     getDetails(): string;
 }
 
+interface DogOwner {
+    dogName: string;
+    getDogDetails(): string;
+}
+
 class Employee implements Person {
     constructor(public readonly id: string, public name: string, private dept: string, public city: string) {}
 
@@ -11,15 +16,23 @@ class Employee implements Person {
     }
 }
 
-class Customer implements Person {
-    constructor(public readonly id: string, public name: string, public city: string, public creditLimit: number) {}
+class Customer implements Person, DogOwner {
+    constructor(public readonly id: string, public name: string, public city: string, public creditLimit: number, public dogName: string) {}
 
     getDetails(){
         return `${this.name} has ${this.creditLimit} limit`;
     }
+
+    getDogDetails(): string {
+        return `${this.name} has a dog named ${this.dogName}`;
+    }
 }
 
-let data: Person[] = [new Employee("fvega", "Fidel Vega", "Sales", "Paris"), new Customer("ajones", "Alice jones", "London", 500)];
+let alice = new Customer("ajones", "Alice Jones", "London", 500, "Fido");
 
+let dogOwners: DogOwner[] = [alice];
+dogOwners.forEach(item => console.log(item.getDogDetails()));
+
+let data: Person[] = [new Employee("fvega", "Fidel Vega", "Sales", "Paris"), alice];
 data.forEach(item => console.log(item.getDetails()));
 
