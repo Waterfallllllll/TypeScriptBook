@@ -1,29 +1,16 @@
-class Person {
-    id;
-    name;
-    city;
-    constructor(id, name, city) {
-        this.id = id;
-        this.name = name;
-        this.city = city;
-    }
-    getDetails() {
-        return `${this.name}, ${this.getSpecificDetails()}`;
-    }
-}
-;
-class Employee extends Person {
+class Employee {
     id;
     name;
     dept;
+    city;
     constructor(id, name, dept, city) {
-        super(id, name, city);
         this.id = id;
         this.name = name;
         this.dept = dept;
+        this.city = city;
     }
-    getSpecificDetails() {
-        return `works in ${this.dept}`;
+    getDetails() {
+        return `${this.name} works in ${this.dept}`;
     }
 }
 class Customer {
@@ -37,13 +24,9 @@ class Customer {
         this.city = city;
         this.creditLimit = creditLimit;
     }
+    getDetails() {
+        return `${this.name} has ${this.creditLimit} limit`;
+    }
 }
 let data = [new Employee("fvega", "Fidel Vega", "Sales", "Paris"), new Customer("ajones", "Alice jones", "London", 500)];
-data.forEach(item => {
-    if (item instanceof Person) {
-        console.log(item.getDetails());
-    }
-    else {
-        console.log(`Customer: ${item.name}`);
-    }
-});
+data.forEach(item => console.log(item.getDetails()));
