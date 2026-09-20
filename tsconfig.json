@@ -8,5 +8,6 @@
         "strictNullChecks": true,
         // "noImplicitReturns": true
         "noUncheckedIndexedAccess": true,
+        "module": "Node16",
     }
 }
