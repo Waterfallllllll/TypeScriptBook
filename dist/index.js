@@ -1,9 +1,10 @@
-import { Person, Product } from "./dataTypes.js";
+import { City, Person, Product } from "./dataTypes.js";
 let people = [
     new Person("Bob Smith", "London"),
     new Person("Dora Peters", "New York"),
 ];
 let products = [new Product("Running Shoes", 100), new Product("Hat", 25)];
+let cities = [new City("London", 813), new City("Paris", 214)];
 class DataCollection {
     items = [];
     constructor(initialItems) {
@@ -13,7 +14,7 @@ class DataCollection {
         this.items.push(newItem);
     }
     getNames() {
-        return this.items.map(item => item.name);
+        return this.items.map((item) => item.name);
     }
     getItem(index) {
         return this.items[index];
@@ -27,3 +28,5 @@ let productData = new DataCollection(products);
 let firstProduct = productData.getItem(0);
 console.log(`First Product: ${firstProduct.name}, ${firstProduct.price}`);
 console.log(`Prodcut Names: ${productData.getNames().join(", ")}`);
+let cityData = new DataCollection(cities);
+console.log(`City Names: ${cityData.getNames().join(", ")}`);
