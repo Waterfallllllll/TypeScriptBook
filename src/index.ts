@@ -1,44 +1,30 @@
 import { City, Person, Product, Employee } from "./dataTypes.js";
 
+let products = [new Product("Running Shoes", 100), new Product("Hat", 25)];
+
 type shapeType = { name: string };
 
-interface Collection<T extends shapeType> {
-    add(...newItems: T[]): void;
-    get(name: string): T;
-    count: number;
-}
+class Collection<T extends shapeType> {
+    private items: Set<T>;
 
-abstract class ArrayCollection<T extends shapeType> implements Collection<T> {
-    protected items: T[] = [];
+    constructor(initialItems: T[] = []) {
+        this.items = new Set<T>(initialItems);
+    }
 
     add(...newItems: T[]): void {
-        this.items.push(...newItems);
+        newItems.forEach(newItem => this.items.add(newItem));
     }
 
-    abstract get(searchTerm: string): T;
+    get(name: string): T {
+        return [...this.items.values()].find(item => item.name === name);
+    }
 
     get count(): number {
-        return this.items.length;
+        return this.items.size;
     }
 }
 
-class ProductCollection extends ArrayCollection<Product> {
-    
-    get(searchTerm: string): Product {
-        return this.items.find(item => item.name === searchTerm);
-    }
-}
-
-class PersonCollection extends ArrayCollection<Person> {
-
-    get(searchTerm: string): Person {
-        return this.items.find(item => item.name === searchTerm || item.city === searchTerm);
-    }
-}
-
-let peopleCollection: Collection<Person> = new PersonCollection();
-peopleCollection.add(new Person("Bob Smith", "London"), new Person("Dora Peters", "New York"));
-let productCollection: Collection<Product> = new ProductCollection();
-productCollection.add(new Product("Running Shoes", 100), new Product("Hat", 25));
-[peopleCollection, productCollection].forEach(c => console.log(`Size: ${c.count}`));
-
+let productCollection: Collection<Product> = new Collection<Product>(products);
+console.log(`There are ${productCollection.count} products`);
+let p = productCollection.get("Hat");
+console.log(`Product: ${p.name}, ${p.price}`);
