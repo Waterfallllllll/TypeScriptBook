@@ -24,17 +24,11 @@ class Collection<T extends shapeType> {
         return this.items.size;
     }
 
-    values(): Iterator<T> {
+    values(): IterableIterator<T> {
         return this.items.values();
     }
 }
 
 let productCollection: Collection<Product> = new Collection<Product>(products);
 console.log(`There are ${productCollection.count} products`);
-
-let iterator: Iterator<Product> = productCollection.values();
-let result: IteratorResult<Product> = iterator.next();
-while (!result.done) {
-    console.log(`Product: ${result.value.name}, ${result.value.price}`);
-    result = iterator.next();
-}
+[...productCollection.values()].forEach(p => console.log(`Product: ${p.name}, ${p.price}`));
