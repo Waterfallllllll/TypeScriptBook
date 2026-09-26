@@ -1,4 +1,4 @@
-let firstVal = "String Value";
-let secondVal = 100;
-let mismatchCheck = "String Value";
-export {};
+import { City, Person, Product } from "./dataTypes.js";
+let firstVal = new City("London", 8136000);
+let secondVal = new Person("Bob", "London");
+let thirdVal = new Product("Kayak", 275);
